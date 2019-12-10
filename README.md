@@ -1,2 +1,2 @@
 # PythonXboxDVR
- Moves DVR files around
+Muta clipurile/screenshot-urile si le sorteaza.
