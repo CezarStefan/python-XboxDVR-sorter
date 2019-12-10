@@ -27,7 +27,7 @@ def sortare_xbox_dvr():
 
         extensie = file[-4:]    # retinem extensia ca sa ne fie usor sa redenumim (se poate dezvolta algoritmul in functie de extensie sa faca alte lucruri / alte sortari etc.)
 
-        if not os.path.exists(folder_joc):   # verificam daca NU folderul exista
+        if not os.path.exists(folder_joc):   # verificam daca NU exista folderul
             os.makedirs(folder_joc)     # creem folderul
 
         destinatia = folder_joc + file[:-4] + '-' + str(date.today()) + extensie # stabilim destinatia + numele fisierului la care adaugam ziua
