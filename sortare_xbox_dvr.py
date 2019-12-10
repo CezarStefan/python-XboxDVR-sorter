@@ -16,10 +16,10 @@ captures = "C:/Users/aquas/Videos/Captures/"
 ### Verifica daca exista fisiere in locatia initiala
 ### Sortarea in foldere se face dupa primul cuvant
 ### Daca nu exista folder pentru acel joc se face unul
-### Redenumim fisierele pentru a evita problemele (adaugam la final data + un numar random)
+### Redenumim fisierele pentru a evita problemele (adaugam la final data / poate si un numar random)
 ### Muta fisierele in destiantia finala
 
-def clean_xbox_dvr():
+def sortare_xbox_dvr():
     for file in os.listdir(captures):   # executam pentru fiecare fisier prezent in folder
 
         sursa = captures+file   # stabilim fiserul sursa
@@ -30,10 +30,13 @@ def clean_xbox_dvr():
         if not os.path.exists(folder_joc):   # verificam daca NU folderul exista
             os.makedirs(folder_joc)     # creem folderul
 
-        destinatia = folder_joc + file[:-4] + '-' + str(date.today()) + '-' + str(randint(1000,9999)) + extensie # stabilim destinatia + numele fisierului la care adaugam ziua si un numar random intre 1000 si 9999
+        destinatia = folder_joc + file[:-4] + '-' + str(date.today()) + extensie # stabilim destinatia + numele fisierului la care adaugam ziua
+
+        while os.path.exists(destinatia): # verificam daca exista deja un fisier cu acelasi nume ( se intampla doar daca descarcam fisiere si sortam pentru acelasi joc de mai multe ori intr-o singura zi)
+            destinatia = folder_joc + file[:-4] + '-' + str(date.today()) + '-' + str(randint(1000,9999)) + extensie    # daca exista: adaugam un numar la intamplare intre 1000 si 9999 
 
         shutil.move(sursa,destinatia)    # executam mutarea efectiva
 
 ########## Programul efectiv apeleaza functia
 
-clean_xbox_dvr()
+sortare_xbox_dvr()
