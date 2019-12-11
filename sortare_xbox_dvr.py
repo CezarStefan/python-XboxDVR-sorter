@@ -23,7 +23,12 @@ def sortare_xbox_dvr():
     for file in os.listdir(captures):   # executam pentru fiecare fisier prezent in folder
 
         sursa = captures+file   # stabilim fiserul sursa
-        folder_joc = destin + file.split(' ')[0] + '/'  # stabilim calea folderului in care trebuie sa mutam fisierul in functie de numele fisierului
+
+        # stabilim calea si numele folderului
+        if '(' in file: # daca exista caracterul ( inseamna ca exista mai multe fisiere pentru acelasi joc
+            folder_joc = destin + file.split('(')[0][:-1] + '/'  # cum dupa numele jocului in denumire apare ' (X)' unde X este un numar scapam de paranteza si ce urmeaza cu functia .split('(')[0] iar pentru spatiul generat intre nume si paranteza folosim [:-1]
+        else:
+            folder_joc = destin + file[:-4] + '/' # nu exista (X) deci putem sa luam numele intreg dar excludem extensia cu [:-4]
 
         extensie = file[-4:]    # retinem extensia ca sa ne fie usor sa redenumim (se poate dezvolta algoritmul in functie de extensie sa faca alte lucruri / alte sortari etc.)
 
