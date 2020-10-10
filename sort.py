@@ -40,4 +40,4 @@ for file in os.listdir(input_f):
         destin_fullpath = game_f + file[:-4] + '-' + str(date.today()) + '-' + str(randint(1000,9999)) + ext
 
     # We move the actual files.
-    shutil.move(origin_fullpath,d_fullpath)
+    shutil.move(origin_fullpath,destin_fullpath)
